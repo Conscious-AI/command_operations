@@ -1,3 +1,21 @@
+class Interact:
+    """
+    This class can be used by the command scripts to take input
+    from the user in an interactive way and produce any outputs
+    through logger.
+    """
+
+    def __init__(self):
+        import sys
+
+        self.sys = sys
+
+    def take_input(self, _str: str):
+        self.sys.stdout.write(f"CAI: COPS: STDIN: {_str}\n")
+        self.sys.stdout.flush()
+        return self.sys.stdin.readline()
+
+
 class TTS:
     """
     Text-to-speech utility class for simple auditory interaction with user.
@@ -8,7 +26,7 @@ class TTS:
 
         self.engine = pyttsx3.init()
 
-    def speak(self, _str):
+    def speak(self, _str: str):
         self.engine.say(_str)
         self.engine.runAndWait()
 
