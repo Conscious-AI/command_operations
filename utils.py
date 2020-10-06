@@ -26,7 +26,8 @@ class TTS:
 
         self.engine = pyttsx3.init()
 
-    def speak(self, _str: str):
+    def speak(self, _str: str, rate=200):
+        self.engine.setProperty("rate", rate)
         self.engine.say(_str)
         self.engine.runAndWait()
 

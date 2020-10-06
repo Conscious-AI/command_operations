@@ -61,8 +61,8 @@ class CommandOps:
 
         # TODO: Close the StreamWriter
 
-    def proc_output_cb(self, line: bytes):
-        printout(f"Inside proc output callback - {line.decode()}")
+    # def proc_output_cb(self, line: bytes):
+    #     printout(f"Inside proc output callback - {line.decode()}")
 
     def run(self, _dir):
         # Running commands as separate modules
