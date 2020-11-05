@@ -54,15 +54,17 @@ class CommandOps:
 
         # Sending user response back to process
         _in = sys.stdin.readline()
-        streamIn.write(f"{_in}\r\n".encode())
+        streamIn.write(f"{_in}\n".encode())
 
-        # Draining the stdin of process stream
+        # Draining the stdout of main console to stdin of process stream
         await streamIn.drain()
 
         # TODO: Close the StreamWriter
 
-    # def proc_output_cb(self, line: bytes):
-    #     printout(f"Inside proc output callback - {line.decode()}")
+    def proc_output_cb(self, line: bytes):
+        pass
+        # For debugging purposes
+        # printout(f"proc: out: {line.decode()}")
 
     def run(self, _dir):
         # Running commands as separate modules
