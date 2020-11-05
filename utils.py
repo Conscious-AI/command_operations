@@ -91,3 +91,47 @@ class LocationProvider:
     def get_location_timezone(self) -> str:
         return self.data["timezone"]
 
+
+class WeatherUtils:
+    """
+    A helper utility class for weather related commands.
+    """
+
+    API_FILE = "owm_api_key"
+
+    def __init__(self):
+        import webbrowser
+
+        self.webbrowser = webbrowser
+
+    def owm_register(self, _in: Interact):
+        self.webbrowser.open("https://home.openweathermap.org/api_keys")
+        key = _in.take_input("Enter OWM API key")
+
+        with open(self.API_FILE, "w") as f:
+            f.write(key)
+
+    def getDirections(self, angle: int):
+        directions = [
+            "north",
+            "north-east",
+            "east",
+            "south-east",
+            "south",
+            "south-west",
+            "west",
+            "north-west",
+        ]
+        return directions[round(angle / 45) % 8]
+
+    def getUVIndexRisk(self, idx: int):
+        if idx <= 2:
+            return "low"
+        elif idx >= 3 and idx <= 5:
+            return "moderate"
+        elif idx >= 6 and idx <= 7:
+            return "high"
+        elif idx >= 8 and idx <= 10:
+            return "very high"
+        else:
+            return "extreme"
