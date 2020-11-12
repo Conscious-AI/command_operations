@@ -1,3 +1,6 @@
+# Some misc. exclusions
 __pycache__
 */__pycache__
+
+# Excluding Secrets
 owm_api_key
